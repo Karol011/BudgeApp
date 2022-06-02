@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ItemViewset
+from .views import ItemViewset, ItemList
+from BudgeApp import views
 
-router = DefaultRouter()
-router.register(r'items', ItemViewset, basename="items")
+#router = DefaultRouter()
+#router.register(r'items', ItemViewset, basename="items")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    #path('', include(router.urls)),
+    path('items/', views.ItemList.as_view()),
 ]
